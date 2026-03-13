@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melodie Pousada à Beira Mar | Hospedagem em Ingleses Norte Florianópolis</title>
+  <meta name="description" content="Pousada frente ao mar em Ingleses Norte, Florianópolis. Hospedagem familiar com acesso direto à praia, churrasqueira e mirante. Avaliação 4.9 estrelas!">
+  <meta name="keywords" content="pousada, florianopolis, ingleses, frente ao mar, hotel, hospedagem">
+  <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D4F4F',
+            'primary-light': '#1A7A7A',
+            accent: '#FF8C42',
+            'ocean-50': '#E6F7F7',
+            'ocean-100': '#B3E8E8',
+            // add all -- vars
+            'ocean-200': '#80D9D9',
+            'ocean-300': '#4DCACA',
+            'ocean-400': '#26BFBF',
+            'ocean-500': '#0D4F4F',
+            'ocean-600': '#0B4545',
+            'ocean-700': '#083838',
+            'ocean-800': '#062A2A',
+            'ocean-900': '#031C1C',
+          },
+          fontFamily: {
+            heading: ['Cormorant Garamond', 'serif'],
+            body: ['DM Sans', 'sans-serif'],
+            accent: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between py-5">
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-full bg-[#0D4F4F] flex items-center justify-center">
+          <span class="text-white font-bold text-xl">M</span>
+        </div>
+        <div>
+          <span class="font-bold text-lg text-[#0D4F4F]">Melodie</span>
+          <span class="text-xs text-gray-600"> Pousada</span>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="/" class="text-sm font-medium text-gray-700 hover:text-[#0D4F4F] relative group">
+          Início
+        </a>
+        <a href="/quartos.html" class="text-sm font-medium text-gray-700 hover:text-[#0D4F4F] relative group">
+          Quartos
+        </a>
+        <a href="/galeria.html" class="text-sm font-medium text-gray-700 hover:text-[#0D4F4F] relative group">
+          Galeria
+        </a>
+        <a href="/localizacao.html" class="text-sm font-medium text-gray-700 hover:text-[#0D4F4F] relative group">
+          Localização
+        </a>
+        <a href="/sobre.html" class="text-sm font-medium text-gray-700 hover:text-[#0D4F4F] relative group">
+          Sobre
+        </a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button id="lang-toggle" class="p-2 rounded-full hover:bg-blue-50">
+          PT ▼
+        </button>
+        <a href="/reservas.html" class="bg-[#0D4F4F] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#1A7A7A]">
+          Reservar
+        </a>
+        <button class="lg:hidden p-2 rounded-full hover:bg-blue-50">
+          ☰
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative h-screen min-h-[600px] overflow-hidden flex items-center justify-center text-center px-4 pt-24" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80'); background-size: cover; background-position: center;">
+  <div class="max-w-4xl mx-auto">
+    <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md rounded-full px-4 py-2 mb-6">
+      <div class="flex gap-0.5">
+        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+      </div>
+      <span class="text-white text-sm font-medium">4.9 • 58 avaliações</span>
+    </div>
+    <h1 class="hero-title font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-4">Melodie Pousada à Beira Mar</h1>
+    <p class="font-serif text-xl md:text-2xl text-white/90 mb-6">Seu refúgio perfeito frente ao mar</p>
+    <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+      Experimente a verdadeira hospitalidade brasileira em um paraíso tropical. Relaxe em nossas acomodações confortáveis com vista para o mar.
+    </p>
+    <div class="flex items-center justify-center gap-2 text-white/70 mb-8">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+      <span class="text-sm">Ingleses Norte, Florianópolis</span>
+    </div>
+    <a href="/reservas.html" class="inline-flex bg-[#FF8C42] hover:bg-[#FFA566] text-white font-medium rounded-full px-8 py-4 text-lg">
+      Reservar Sua Estadia
+    </a>
+  </div>
+</section>
+
+<!-- Rooms Preview -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="font-bold text-3xl md:text-4xl lg:text-5xl text-[#0D4F4F] mb-4">Nossas Acomodações</h2>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">Conforto e estilo em cada detalhe</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+        <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80');"></div>
+        <div class="p-6">
+          <div class="absolute bottom-4 left-4 bg-[#FF8C42] text-white px-3 py-1 rounded-full text-sm font-medium" style="position:relative; margin-bottom:1rem;">R$ 600</div>
+          <h3 class="font-bold text-xl text-[#0D4F4F] mb-2">Cobertura</h3>
+          <p class="text-gray-600 text-sm mb-4">Vista panorâmica para o mar</p>
+          <div class="flex gap-4 text-sm text-gray-600">
+            <span>8-10 hóspedes</span>
+            <span>5 camas</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+        <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80');"></div>
+        <div class="p-6">
+          <div class="absolute bottom-4 left-4 bg-[#FF8C42] text-white px-3 py-1 rounded-full text-sm font-medium" style="position:relative; margin-bottom:1rem;">R$ 400</div>
+          <h3 class="font-bold text-xl text-[#0D4F4F] mb-2">Frente de Mar 1</h3>
+          <p class="text-gray-600 text-sm mb-4">Vista panorâmica para o mar</p>
+          <div class="flex gap-4 text-sm text-gray-600">
+            <span>1-4 hóspedes</span>
+            <span>2 camas</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+        <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80');"></div>
+        <div class="p-6">
+          <div class="absolute bottom-4 left-4 bg-[#FF8C42] text-white px-3 py-1 rounded-full text-sm font-medium" style="position:relative; margin-bottom:1rem;">R$ 400</div>
+          <h3 class="font-bold text-xl text-[#0D4F4F] mb-2">Frente de Mar 2</h3>
+          <p class="text-gray-600 text-sm mb-4">Vista panorâmica para o mar</p>
+          <div class="flex gap-4 text-sm text-gray-600">
+            <span>1-4 hóspedes</span>
+            <span>2 camas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-16">
+      <a href="/quartos.html" class="border-2 border-[#0D4F4F] text-[#0D4F4F] font-medium rounded-full px-8 py-3 hover:bg-[#0D4F4F] hover:text-white transition-all">
+        Ver Todos os Quartos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 bg-[#0D4F4F] text-white text-center">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="font-bold text-3xl md:text-4xl lg:text-5xl mb-6">Pronto para relaxar?</h2>
+    <p class="text-white/80 text-lg max-w-2xl mx-auto mb-8">
+      Reserve agora sua estadia na Melodie Pousada e viva momentos inesquecíveis em Ingleses Norte.
+    </p>
+    <a href="/reservas.html" class="bg-[#FF8C42] hover:bg-[#FFA566] text-white font-medium rounded-full px-10 py-4 text-lg">
+      Reservar Agora
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#031C1C] text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+            <span class="text-white font-bold text-2xl">M</span>
+          </div>
+          <div>
+            <span class="font-bold text-xl">Melodie</span>
+            <p class="text-xs text-[#80D9D9]">Pousada à Beira Mar</p>
+          </div>
+        </a>
+        <p class="text-[#80D9D9] text-sm mb-6">
+          Seu refúgio perfeito frente ao mar em Ingleses Norte, Florianópolis.
+        </p>
+        <div class="flex gap-4">
+          <a href="https://instagram.com/melodiepousadaingleses" target="_blank" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30">
+            📷
+          </a>
+          <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30">
+            f
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4">Links Rápidos</h4>
+        <ul class="space-y-3">
+          <li><a href="/" class="text-[#80D9D9] hover:text-white text-sm">Início</a></li>
+          <li><a href="/quartos.html" class="text-[#80D9D9] hover:text-white text-sm">Quartos</a></li>
+          <li><a href="/galeria.html" class="text-[#80D9D9] hover:text-white text-sm">Galeria</a></li>
+          <li><a href="/localizacao.html" class="text-[#80D9D9] hover:text-white text-sm">Localização</a></li>
+          <li><a href="/sobre.html" class="text-[#80D9D9] hover:text-white text-sm">Sobre Nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4">Contato</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#FF8C42] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+            <span class="text-[#80D9D9] text-sm">Servidão Fermino Manoel Zeferino, 79<br>Ingleses Norte<br>Florianópolis - SC<br>CEP 88058-702</span>
+          </li>
+          <li>
+            <a href="https://wa.me/5548988212772" class="flex items-center gap-3 text-[#80D9D9] hover:text-white">
+              📱 <span class="text-sm">+55 48 98821-2772</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:pousadamelodiesc@gmail.com" class="flex items-center gap-3 text-[#80D9D9] hover:text-white">
+              ✉️ <span class="text-sm">pousadamelodiesc@gmail.com</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4">Newsletter</h4>
+        <p class="text-[#80D9D9] text-sm mb-4">Receba ofertas exclusivas e novidades.</p>
+        <div class="flex gap-2">
+          <input type="email" placeholder="Seu email" class="flex-1 px-4 py-2.5 rounded-full bg-white/10 border border-[#4DCACA] text-white placeholder:text-[#80D9D9] focus:outline-none">
+          <button class="w-12 h-12 rounded-full bg-[#FF8C42] hover:bg-[#FFA566] flex items-center justify-center">
+            ➤
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-[#062A2A] mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#80D9D9]">
+      <p>© 2024 Melodie Pousada à Beira Mar. Todos os direitos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white">Termos de Uso</a>
+        <a href="#" class="hover:text-white">Política de Privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/5548988212772?text=Olá! Gostaria de fazer uma reserva na Melodie Pousada." class="whatsapp-btn fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] hover:bg-[#20ba56] rounded-full flex items-center justify-center text-white text-2xl shadow-lg z-40" target="_blank">📱</a>
+
+<script src="script.js"></script>
+</body>
+</html>
+

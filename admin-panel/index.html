@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melodie Pousada - Sistema de Gestao</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5a9;
+            --primary-dark: #0891b2;
+            --primary-light: #14b8a6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --sidebar-width: 280px;
+            --header-height: 70px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--gray-50); min-height: 100vh; }
+        
+        /* Login Screen */
+        .login-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 20px; }
+        .login-box { background: white; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); padding: 40px; width: 100%; max-width: 420px; animation: slideUp 0.5s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .login-logo { text-align: center; margin-bottom: 30px; }
+        .login-logo i { font-size: 48px; color: var(--primary); margin-bottom: 10px; }
+        .login-logo h1 { color: var(--dark); font-size: 28px; font-weight: 800; }
+        .login-logo p { color: var(--gray-500); font-size: 14px; margin-top: 5px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--gray-700); font-size: 14px; }
+        .form-group input { width: 100%; padding: 14px 16px; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 15px; transition: all 0.3s; background: var(--gray-50); }
+        .form-group input:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 4px rgba(14, 165, 169, 0.1); }
+        .btn-primary { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(14, 165, 169, 0.3); }
+        
+        /* Dashboard Layout */
+        .dashboard-container { display: none; min-height: 100vh; }
+        .dashboard-container.active { display: flex; }
+        
+        /* Sidebar */
+        .sidebar { width: var(--sidebar-width); background: linear-gradient(180deg, var(--dark) 0%, #0f172a 100%); min-height: 100vh; position: fixed; left: 0; top: 0; z-index: 100; transition: all 0.3s; overflow-y: auto; }
+        .sidebar-header { padding: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-logo { display: flex; align-items: center; gap: 12px; }
+        .sidebar-logo i { font-size: 32px; color: var(--primary); }
+        .sidebar-logo h2 { color: white; font-size: 22px; font-weight: 700; }
+        .sidebar-logo span { color: var(--primary-light); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        .sidebar-nav { padding: 20px 15px; }
+        .nav-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; color: rgba(255,255,255,0.7); text-decoration: none; border-radius: 12px; margin-bottom: 6px; transition: all 0.3s; cursor: pointer; font-weight: 500; }
+        .nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+        .nav-item.active { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; box-shadow: 0 4px 15px rgba(14, 165, 169, 0.4); }
+        .nav-item i { width: 20px; text-align: center; }
+        .nav-item .badge { margin-left: auto; background: var(--danger); color: white; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        
+        /* Main Content */
+        .main-content { flex: 1; margin-left: var(--sidebar-width); background: var(--gray-50); min-height: 100vh; }
+        
+        /* Header */
+        .header { height: var(--header-height); background: white; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; position: sticky; top: 0; z-index: 50; }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 22px; color: var(--gray-600); cursor: pointer; }
+        .page-title { font-size: 20px; font-weight: 700; color: var(--gray-900); }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .header-btn { width: 42px; height: 42px; border-radius: 12px; border: none; background: var(--gray-100); color: var(--gray-600); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; position: relative; }
+        .header-btn:hover { background: var(--primary); color: white; }
+        .header-btn .notification-dot { position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background: var(--danger); border-radius: 50%; border: 2px solid white; }
+        .user-menu { display: flex; align-items: center; gap: 12px; padding: 6px 12px 6px 6px; background: var(--gray-100); border-radius: 30px; cursor: pointer; transition: all 0.3s; }
+        .user-menu:hover { background: var(--gray-200); }
+        .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px; }
+        .user-info { display: flex; flex-direction: column; }
+        .user-name { font-weight: 600; font-size: 14px; color: var(--gray-900); }
+        .user-role { font-size: 12px; color: var(--gray-500); }
+        
+        /* Content Area */
+        .content { padding: 30px; }
+        
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 30px; }
+        .stat-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.3s; position: relative; overflow: hidden; }
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+        .stat-card.primary::before { background: var(--primary); }
+        .stat-card.success::before { background: var(--success); }
+        .stat-card.warning::before { background: var(--warning); }
+        .stat-card.info::before { background: var(--info); }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .stat-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+        .stat-card.primary .stat-icon { background: rgba(14, 165, 169, 0.1); color: var(--primary); }
+        .stat-card.success .stat-icon { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .stat-card.warning .stat-icon { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .stat-card.info .stat-icon { background: rgba(59, 130, 246, 0.1); color: var(--info); }
+        .stat-label { font-size: 14px; color: var(--gray-500); margin-bottom: 6px; }
+        .stat-value { font-size: 28px; font-weight: 800; color: var(--gray-900); }
+        .stat-change { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-top: 8px; }
+        .stat-change.up { color: var(--success); }
+        .stat-change.down { color: var(--danger); }
+        
+        /* Cards */
+        .card { background: white; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); overflow: hidden; }
+        .card-header { padding: 20px 24px; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; }
+        .card-title { font-size: 18px; font-weight: 700; color: var(--gray-900); }
+        .card-body { padding: 24px; }
+        
+        /* Table */
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 16px; text-align: left; }
+        th { background: var(--gray-50); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); }
+        td { border-bottom: 1px solid var(--gray-100); font-size: 14px; color: var(--gray-700); }
+        tr:hover td { background: var(--gray-50); }
+        
+        /* Status Badges */
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .status-badge.confirmed { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .status-badge.pending { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .status-badge.completed { background: rgba(107, 114, 128, 0.1); color: var(--gray-500); }
+        .status-badge.cancelled { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+        .status-badge i { font-size: 10px; }
+        
+        /* Buttons */
+        .btn { padding: 10px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; border: none; }
+        .btn-primary-small { background: var(--primary); color: white; }
+        .btn-primary-small:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 2px solid var(--gray-200); color: var(--gray-600); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        
+        /* Action Buttons */
+        .action-btns { display: flex; gap: 8px; }
+        .action-btn { width: 34px; height: 34px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .action-btn.view { background: rgba(59, 130, 246, 0.1); color: var(--info); }
+        .action-btn.view:hover { background: var(--info); color: white; }
+        .action-btn.edit { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .action-btn.edit:hover { background: var(--warning); color: white; }
+        .action-btn.delete { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+        .action-btn.delete:hover { background: var(--danger); color: white; }
+        
+        /* Calendar View */
+        .calendar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+        .calendar-nav { display: flex; align-items: center; gap: 16px; }
+        .calendar-nav button { width: 40px; height: 40px; border-radius: 10px; border: none; background: var(--gray-100); cursor: pointer; transition: all 0.3s; }
+        .calendar-nav button:hover { background: var(--primary); color: white; }
+        .calendar-month { font-size: 20px; font-weight: 700; color: var(--gray-900); }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: var(--gray-200); border-radius: 12px; overflow: hidden; }
+        .calendar-day-header { background: var(--gray-50); padding: 12px; text-align: center; font-weight: 600; font-size: 13px; color: var(--gray-500); }
+        .calendar-day { background: white; min-height: 100px; padding: 8px; position: relative; }
+        .calendar-day.other-month { background: var(--gray-50); }
+        .calendar-day.today { background: rgba(14, 165, 169, 0.05); }
+        .day-number { font-weight: 600; font-size: 14px; color: var(--gray-700); }
+        .calendar-day.today .day-number { width: 28px; height: 28px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        
+        /* Room Cards */
+        .rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+        .room-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .room-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .room-image { height: 160px; background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%); display: flex; align-items: center; justify-content: center; }
+        .room-image i { font-size: 48px; color: rgba(255,255,255,0.5); }
+        .room-content { padding: 20px; }
+        .room-name { font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
+        .room-type { font-size: 13px; color: var(--gray-500); margin-bottom: 16px; }
+        .room-details { display: flex; gap: 20px; margin-bottom: 16px; }
+        .room-detail { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--gray-600); }
+        .room-price { font-size: 22px; font-weight: 800; color: var(--primary); }
+        .room-price span { font-size: 13px; color: var(--gray-500); font-weight: 400; }
+        .room-status { display: inline-flex; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+        .room-status.available { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .room-status.occupied { background: rgba(59, 130, 246, 0.1); color: var(--info); }
+        
+        /* Guest Cards */
+        .guests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; }
+        .guest-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .guest-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .guest-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+        .guest-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700; }
+        .guest-name { font-size: 18px; font-weight: 700; color: var(--gray-900); }
+        .guest-country { font-size: 13px; color: var(--gray-500); }
+        .guest-info { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+        .guest-info-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-600); }
+        .guest-info-item i { width: 18px; color: var(--gray-400); }
+        .guest-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-top: 16px; border-top: 1px solid var(--gray-100); }
+        .guest-stat { text-align: center; }
+        .guest-stat-value { font-size: 20px; font-weight: 700; color: var(--gray-900); }
+        .guest-stat-label { font-size: 12px; color: var(--gray-500); }
+        
+        /* Search and Filters */
+        .search-filter-bar { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 250px; position: relative; }
+        .search-box input { width: 100%; padding: 14px 16px 14px 48px; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 15px; transition: all 0.3s; }
+        .search-box input:focus { outline: none; border-color: var(--primary); }
+        .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--gray-400); }
+        .filter-select { padding: 14px 16px; border: 2px solid var(--gray-200); border-radius: 12px; font-size: 15px; background: white; cursor: pointer; min-width: 160px; }
+        
+        /* Page Sections */
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.active { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+            .menu-toggle { display: block; }
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .header { padding: 0 16px; }
+            .content { padding: 16px; }
+            .search-filter-bar { flex-direction: column; }
+            .guests-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fas fa-water"></i>
+                <h1>Melodie Pousada</h1>
+                <p>Sistema de Gestao de Reservas</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="admin@melodiepousada.com.br" required>
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="loginPassword" placeholder="********" required>
+                </div>
+                <div id="loginError" style="color: var(--danger); font-size: 14px; margin-bottom: 15px; display: none; text-align: center;">
+                    <i class="fas fa-exclamation-circle"></i> Email ou senha incorretos
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+            </form>
+            <div style="text-align: center; margin-top: 20px; color: var(--gray-500); font-size: 12px;">
+                <p>Credenciais de acesso:</p>
+                <p style="font-weight: 600;">Email: matiastabachinski21@gmail.com</p>
+                <p style="font-weight: 600;">Senha: Matytaba10</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-water"></i>
+                    <div>
+                        <h2>Melodie</h2>
+                        <span>Admin Panel</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a class="nav-item" data-page="bookings">
+                    <i class="fas fa-calendar-check"></i> Reservas
+                    <span class="badge">5</span>
+                </a>
+                <a class="nav-item" data-page="calendar">
+                    <i class="fas fa-calendar-alt"></i> Calendario
+                </a>
+                <a class="nav-item" data-page="rooms">
+                    <i class="fas fa-bed"></i> Quartos
+                </a>
+                <a class="nav-item" data-page="guests">
+                    <i class="fas fa-users"></i> Hospedes
+                </a>
+                <a class="nav-item" data-page="reports">
+                    <i class="fas fa-chart-bar"></i> Relatorios
+                </a>
+                <a class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i> Configuracoes
+                </a>
+                <a class="nav-item" id="logoutBtn" style="margin-top: 40px; color: var(--danger);">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <button class="header-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <div class="user-menu">
+                        <div class="user-avatar">FA</div>
+                        <div class="user-info">
+                            <span class="user-name">Fabio</span>
+                            <span class="user-role">Administrador</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Dashboard Page -->
+                <section class="page-section active" id="page-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card primary">
+                            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                            <div class="stat-label">Reservas este mes</div>
+                            <div class="stat-value">24</div>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 12% vs mes anterior</div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                            <div class="stat-label">Taxa de Ocupacao</div>
+                            <div class="stat-value">78%</div>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 5% vs mes anterior</div>
+                        </div>
+                        <div class="stat-card warning">
+                            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-label">Receita este mes</div>
+                            <div class="stat-value">R$ 18.450</div>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 8% vs mes anterior</div>
+                        </div>
+                        <div class="stat-card info">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-label">Nota media</div>
+                            <div class="stat-value">4.9</div>
+                            <div class="stat-change up"><i class="fas fa-arrow-up"></i> 0.1 vs mes anterior</div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 24px;">
+                        <div class="card-header">
+                            <h3 class="card-title">Reservas Recentes</h3>
+                            <button class="btn btn-outline" onclick="navigateTo('bookings')">Ver todas <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Hospede</th>
+                                        <th>Quarto</th>
+                                        <th>Datas</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                        <th>Acoes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div style="display: flex; align-items: center; gap: 12px;"><div class="user-avatar" style="width: 36px; height: 36px; font-size: 12px;">JS</div><div><div style="font-weight: 600;">Joao Silva</div><div style="font-size: 12px; color: var(--gray-500);">joao@email.com</div></div></div></td>
+                                        <td>Cobertura</td>
+                                        <td>15/02 - 20/02</td>
+                                        <td><span class="status-badge confirmed"><i class="fas fa-check"></i> Confirmada</span></td>
+                                        <td style="font-weight: 600;">R$ 3.000</td>
+                                        <td><div class="action-btns"><button class="action-btn view"><i class="fas fa-eye"></i></button><button class="action-btn edit"><i class="fas fa-edit"></i></button><button class="action-btn delete"><i class="fas fa-trash"></i></button></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div style="display: flex; align-items: center; gap: 12px;"><div class="user-avatar" style="width: 36px; height: 36px; font-size: 12px;">MS</div><div><div style="font-weight: 600;">Maria Santos</div><div style="font-size: 12px; color: var(--gray-500);">maria@email.com</div></div></div></td>
+                                        <td>Frente de Mar 1</td>
+                                        <td>18/02 - 22/02</td>
+                                        <td><span class="status-badge pending"><i class="fas fa-clock"></i> Pendente</span></td>
+                                        <td style="font-weight: 600;">R$ 1.600</td>
+                                        <td><div class="action-btns"><button class="action-btn view"><i class="fas fa-eye"></i></button><button class="action-btn edit"><i class="fas fa-edit"></i></button><button class="action-btn delete"><i class="fas fa-trash"></i></button></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div style="display: flex; align-items: center; gap: 12px;"><div class="user-avatar" style="width: 36px; height: 36px; font-size: 12px;">CO</div><div><div style="font-weight: 600;">Carlos Oliveira</div><div style="font-size: 12px; color: var(--gray-500);">carlos@email.com</div></div></div></td>
+                                        <td>Casal 1</td>
+                                        <td>10/02 - 12/02</td>
+                                        <td><span class="status-badge completed"><i class="fas fa-check"></i> Finalizada</span></td>
+                                        <td style="font-weight: 600;">R$ 500</td>
+                                        <td><div class="action-btns"><button class="action-btn view"><i class="fas fa-eye"></i></button><button class="action-btn edit"><i class="fas fa-edit"></i></button><button class="action-btn delete"><i class="fas fa-trash"></i></button></div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bookings Page -->
+                <section class="page-section" id="page-bookings">
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar reserva..." id="bookingSearch">
+                        </div>
+                        <select class="filter-select" id="bookingStatusFilter">
+                            <option value="all">Todos os status</option>
+                            <option value="confirmed">Confirmadas</option>
+                            <option value="pending">Pendentes</option>
+                            <option value="completed">Finalizadas</option>
+                            <option value="cancelled">Canceladas</option>
+                        </select>
+                        <button class="btn btn-primary-small">
+                            <i class="fas fa-plus"></i> Nova Reserva
+                        </button>
+                    </div>
+                    <div class="card">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Hospede</th>
+                                        <th>Quarto</th>
+                                        <th>Check-in</th>
+                                        <th>Check-out</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                        <th>Acoes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Calendar Page -->
+                <section class="page-section" id="page-calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                            <span class="calendar-month" id="calendarMonth">Fevereiro 2024</span>
+                            <button onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-outline"><i class="fas fa-ban"></i> Bloquear Data</button>
+                            <button class="btn btn-primary-small"><i class="fas fa-plus"></i> Nova Reserva</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="calendar-grid" id="calendarGrid"></div>
+                    </div>
+                </section>
+
+                <!-- Rooms Page -->
+                <section class="page-section" id="page-rooms">
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar quarto...">
+                        </div>
+                        <select class="filter-select">
+                            <option value="all">Todos os status</option>
+                            <option value="available">Disponivel</option>
+                            <option value="occupied">Ocupado</option>
+                        </select>
+                        <button class="btn btn-primary-small">
+                            <i class="fas fa-plus"></i> Novo Quarto
+                        </button>
+                    </div>
+                    <div class="rooms-grid" id="roomsGrid"></div>
+                </section>
+
+                <!-- Guests Page -->
+                <section class="page-section" id="page-guests">
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar hospede...">
+                        </div>
+                        <select class="filter-select">
+                            <option value="all">Todos os paises</option>
+                            <option value="brasil">Brasil</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="espanha">Espanha</option>
+                        </select>
+                    </div>
+                    <div class="guests-grid" id="guestsGrid"></div>
+                </section>
+
+                <!-- Reports Page -->
+                <section class="page-section" id="page-reports">
+                    <div class="stats-grid">
+                        <div class="stat-card primary">
+                            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-label">Receita Total</div>
+                            <div class="stat-value">R$ 185K</div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                            <div class="stat-label">Total de Reservas</div>
+                            <div class="stat-value">264</div>
+                        </div>
+                        <div class="stat-card warning">
+                            <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                            <div class="stat-label">Ocupacao Media</div>
+                            <div class="stat-value">73%</div>
+                        </div>
+                        <div class="stat-card info">
+                            <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                            <div class="stat-label">Novos Clientes</div>
+                            <div class="stat-value">156</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Page -->
+                <section class="page-section" id="page-settings">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Informacoes da Pousada</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Nome da Pousada</label>
+                                    <input type="text" value="Melodie Pousada a Beira Mar">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Telefone</label>
+                                    <input type="text" value="+55 48 98821-2772">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>WhatsApp</label>
+                                    <input type="text" value="+55 48 98821-2772">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Email</label>
+                                    <input type="email" value="contato@melodiepousada.com.br">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Configuracion de autenticacion
+        var AUTH_CONFIG = {
+            email: 'matiastabachinski21@gmail.com',
+            password: 'Matytaba10'
+        };
+
+        // Verificar si ya esta autenticado
+        function checkAuth() {
+            var isLoggedIn = localStorage.getItem('melodie_admin_logged_in');
+            if (isLoggedIn === 'true') {
+                showDashboard();
+            }
+        }
+
+        // Funcion de login
+        function handleLogin(email, password) {
+            if (email === AUTH_CONFIG.email && password === AUTH_CONFIG.password) {
+                localStorage.setItem('melodie_admin_logged_in', 'true');
+                return true;
+            }
+            return false;
+        }
+
+        // Mostrar dashboard
+        function showDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboardContainer').classList.add('active');
+            initializeDashboard();
+        }
+
+        // Cerrar sesion
+        function logout() {
+            localStorage.removeItem('melodie_admin_logged_in');
+            document.getElementById('dashboardContainer').classList.remove('active');
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        // Event listeners del login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = document.getElementById('loginEmail').value;
+            var password = document.getElementById('loginPassword').value;
+            
+            if (handleLogin(email, password)) {
+                showDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        // Logout button
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        // Inicializar dashboard
+        function initializeDashboard() {
+            renderCalendar();
+            renderBookings();
+            renderRooms();
+            renderGuests();
+        }
+
+        // Navegacion
+        function navigateTo(page) {
+            var sections = document.querySelectorAll('.page-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+            document.getElementById('page-' + page).classList.add('active');
+            
+            var navItems = document.querySelectorAll('.nav-item');
+            for (var i = 0; i < navItems.length; i++) {
+                navItems[i].classList.remove('active');
+            }
+            document.querySelector('[data-page="' + page + '"]').classList.add('active');
+            
+            document.getElementById('pageTitle').textContent = page.charAt(0).toUpperCase() + page.slice(1);
+        }
+
+        // Navigation click handlers
+        var navItems = document.querySelectorAll('.nav-item[data-page]');
+        for (var i = 0; i < navItems.length; i++) {
+            navItems[i].addEventListener('click', function() {
+                navigateTo(this.getAttribute('data-page'));
+            });
+        }
+
+        // Menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Calendar
+        var currentDate = new Date();
+        
+        function renderCalendar() {
+            var monthNames = ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            var dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+            
+            document.getElementById('calendarMonth').textContent = monthNames[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
+            
+            var firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            var startDay = firstDay.getDay();
+            var totalDays = lastDay.getDate();
+            
+            var html = '';
+            for (var i = 0; i < dayNames.length; i++) {
+                html += '<div class="calendar-day-header">' + dayNames[i] + '</div>';
+            }
+            
+            // Previous month days
+            var prevMonthDays = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+            for (var i = startDay - 1; i >= 0; i--) {
+                html += '<div class="calendar-day other-month"><span class="day-number">' + (prevMonthDays - i) + '</span></div>';
+            }
+            
+            // Current month days
+            var today = new Date();
+            for (var i = 1; i <= totalDays; i++) {
+                var isToday = i === today.getDate() && currentDate.getMonth() === today.getMonth() && currentDate.getFullYear() === today.getFullYear();
+                html += '<div class="calendar-day' + (isToday ? ' today' : '') + '">';
+                html += '<span class="day-number">' + i + '</span>';
+                html += '<div class="day-events"></div>';
+                html += '</div>';
+            }
+            
+            // Next month days
+            var remainingDays = 42 - (startDay + totalDays);
+            for (var i = 1; i <= remainingDays; i++) {
+                html += '<div class="calendar-day other-month"><span class="day-number">' + i + '</span></div>';
+            }
+            
+            document.getElementById('calendarGrid').innerHTML = html;
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            renderCalendar();
+        }
+
+        // Datos de ejemplo
+        var bookingsData = [
+            { id: 'RES001', guest: 'Joao Silva', room: 'Cobertura', checkin: '15/02/2024', checkout: '20/02/2024', status: 'confirmed', total: 'R$ 3.000' },
+            { id: 'RES002', guest: 'Maria Santos', room: 'Frente de Mar 1', checkin: '18/02/2024', checkout: '22/02/2024', status: 'pending', total: 'R$ 1.600' },
+            { id: 'RES003', guest: 'Carlos Oliveira', room: 'Casal 1', checkin: '10/02/2024', checkout: '12/02/2024', status: 'completed', total: 'R$ 500' },
+            { id: 'RES004', guest: 'Ana Paula', room: 'Duplex 1', checkin: '25/02/2024', checkout: '28/02/2024', status: 'confirmed', total: 'R$ 2.400' },
+            { id: 'RES005', guest: 'Pedro Henrique', room: 'Casal 2', checkin: '01/03/2024', checkout: '05/03/2024', status: 'pending', total: 'R$ 1.200' }
+        ];
+
+        function renderBookings() {
+            var tbody = document.getElementById('bookingsTable');
+            var html = '';
+            for (var i = 0; i < bookingsData.length; i++) {
+                var booking = bookingsData[i];
+                var statusText = booking.status === 'confirmed' ? 'Confirmada' : booking.status === 'pending' ? 'Pendente' : booking.status === 'completed' ? 'Finalizada' : 'Cancelada';
+                html += '<tr>';
+                html += '<td><strong>' + booking.id + '</strong></td>';
+                html += '<td>' + booking.guest + '</td>';
+                html += '<td>' + booking.room + '</td>';
+                html += '<td>' + booking.checkin + '</td>';
+                html += '<td>' + booking.checkout + '</td>';
+                html += '<td><span class="status-badge ' + booking.status + '">' + statusText + '</span></td>';
+                html += '<td><strong>' + booking.total + '</strong></td>';
+                html += '<td><div class="action-btns"><button class="action-btn view"><i class="fas fa-eye"></i></button><button class="action-btn edit"><i class="fas fa-edit"></i></button><button class="action-btn delete"><i class="fas fa-trash"></i></button></div></td>';
+                html += '</tr>';
+            }
+            tbody.innerHTML = html;
+        }
+
+        var roomsData = [
+            { name: 'Cobertura', type: 'Premium', capacity: 4, price: 600, status: 'available' },
+            { name: 'Frente de Mar 1', type: 'Standard', capacity: 2, price: 400, status: 'occupied' },
+            { name: 'Frente de Mar 2', type: 'Standard', capacity: 2, price: 400, status: 'available' },
+            { name: 'Casal 1', type: 'Economico', capacity: 2, price: 250, status: 'available' },
+            { name: 'Casal 2', type: 'Economico', capacity: 2, price: 250, status: 'available' },
+            { name: 'Duplex 1', type: 'Familia', capacity: 6, price: 800, status: 'available' }
+        ];
+
+        function renderRooms() {
+            var grid = document.getElementById('roomsGrid');
+            var html = '';
+            for (var i = 0; i < roomsData.length; i++) {
+                var room = roomsData[i];
+                var statusText = room.status === 'available' ? 'Disponivel' : room.status === 'occupied' ? 'Ocupado' : 'Manutencao';
+                html += '<div class="room-card">';
+                html += '<div class="room-image"><i class="fas fa-bed"></i></div>';
+                html += '<div class="room-content">';
+                html += '<h3 class="room-name">' + room.name + '</h3>';
+                html += '<p class="room-type">' + room.type + '</p>';
+                html += '<div class="room-details"><div class="room-detail"><i class="fas fa-user"></i> ' + room.capacity + ' hospedes</div></div>';
+                html += '<div class="room-price">R$ ' + room.price + ' <span>/noite</span></div>';
+                html += '<span class="room-status ' + room.status + '">' + statusText + '</span>';
+                html += '</div></div>';
+            }
+            grid.innerHTML = html;
+        }
+
+        var guestsData = [
+            { name: 'Joao Silva', email: 'joao@email.com', phone: '+55 48 99999-9999', country: 'Brasil', bookings: 5, nights: 12, spent: 'R$ 4.500' },
+            { name: 'Maria Santos', email: 'maria@email.com', phone: '+55 48 98888-8888', country: 'Brasil', bookings: 3, nights: 8, spent: 'R$ 2.800' },
+            { name: 'Carlos Oliveira', email: 'carlos@email.com', phone: '+55 11 97777-7777', country: 'Brasil', bookings: 2, nights: 4, spent: 'R$ 1.200' }
+        ];
+
+        function renderGuests() {
+            var grid = document.getElementById('guestsGrid');
+            var html = '';
+            for (var i = 0; i < guestsData.length; i++) {
+                var guest = guestsData[i];
+                var initials = guest.name.split(' ').map(function(n) { return n.charAt(0); }).join('');
+                html += '<div class="guest-card">';
+                html += '<div class="guest-header"><div class="guest-avatar">' + initials + '</div><div><h3 class="guest-name">' + guest.name + '</h3><p class="guest-country">' + guest.country + '</p></div></div>';
+                html += '<div class="guest-info"><div class="guest-info-item"><i class="fas fa-envelope"></i> ' + guest.email + '</div><div class="guest-info-item"><i class="fas fa-phone"></i> ' + guest.phone + '</div></div>';
+                html += '<div class="guest-stats"><div class="guest-stat"><div class="guest-stat-value">' + guest.bookings + '</div><div class="guest-stat-label">Reservas</div></div><div class="guest-stat"><div class="guest-stat-value">' + guest.nights + '</div><div class="guest-stat-label">Noites</div></div><div class="guest-stat"><div class="guest-stat-value">' + guest.spent + '</div><div class="guest-stat-label">Gasto</div></div></div>';
+                html += '</div>';
+            }
+            grid.innerHTML = html;
+        }
+
+        // Inicializar
+        checkAuth();
+    </script>
+</body>
+</html>
+

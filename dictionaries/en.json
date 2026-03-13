@@ -1,0 +1,299 @@
+{
+  "common": {
+    "home": "Home",
+    "rooms": "Rooms",
+    "gallery": "Gallery",
+    "location": "Location",
+    "about": "About Us",
+    "contact": "Contact",
+    "book": "Book Now",
+    "bookNow": "Book Now",
+    "viewMore": "View More",
+    "viewAll": "View All",
+    "search": "Search",
+    "loading": "Loading...",
+    "send": "Send",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "seeMore": "See More",
+    "seeLess": "See Less",
+    "language": "Language",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "nights": "Nights",
+    "night": "Night",
+    "adults": "Adults",
+    "children": "Children",
+    "total": "Total",
+    "price": "Price",
+    "perNight": "per night",
+    "perPerson": "per person",
+    "free": "Free",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "selectDate": "Select Date",
+    "selectDates": "Select Dates",
+    "checkAvailability": "Check Availability",
+    "translate": "Translate"
+  },
+  "hero": {
+    "title": "Melodie Pousada à Beira Mar",
+    "subtitle": "Your perfect seaside retreat in Ingleses Norte",
+    "description": "Experience true Brazilian hospitality in a tropical paradise. Relax in our comfortable accommodations with ocean views.",
+    "cta": "Book Your Stay",
+    "scrollDown": "Scroll down"
+  },
+  "features": {
+    "title": "Why stay with us?",
+    "subtitle": "Unique lodging experience",
+    "beachFront": {
+      "title": "Beachfront",
+      "description": "Direct access to Ingleses Norte beach, one of the most beautiful in Florianopolis"
+    },
+    "familyRun": {
+      "title": "Family Service",
+      "description": "Fabio and his wife offer personalized attention to all guests"
+    },
+    "comfort": {
+      "title": "Comfort",
+      "description": "Comfortable and well-equipped accommodations for your maximum comfort"
+    },
+    "location": {
+      "title": "Prime Location",
+      "description": "Near Santinho dunes and the best attractions of Ingleses"
+    },
+    "amenities": {
+      "title": "Full Facilities",
+      "description": "BBQ grill, viewpoint, chairs and umbrellas for guests"
+    },
+    "peaceful": {
+      "title": "Peaceful Environment",
+      "description": "The perfect place to rest and relax with family"
+    }
+  },
+  "rooms": {
+    "title": "Our Accommodations",
+    "subtitle": "Comfort and style in every detail",
+    "guests": "guests",
+    "bed": "bed",
+    "beds": "beds",
+    "size": "size",
+    "view": "view",
+    "seaView": "Sea View",
+    "gardenView": "Garden View",
+    "maxGuests": "Maximum guests",
+    "viewDetails": "View Details",
+    "bookNow": "Book Now",
+    "perNight": "/night",
+    "features": "Features",
+    "amenities": "Amenities"
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Unforgettable moments",
+    "interior": "Interior",
+    "exterior": "Exterior",
+    "beach": "Beach",
+    "amenities": "Common Areas",
+    "viewAll": "View All Photos"
+  },
+  "location": {
+    "title": "Location",
+    "subtitle": "Find our paradise",
+    "address": "Address",
+    "howToGet": "How to Get There",
+    "nearby": "Nearby Places",
+    "beaches": "Beaches",
+    "restaurants": "Restaurants",
+    "supermarkets": "Supermarkets",
+    "airport": "Airport",
+    "distance": "Distance",
+    "driving": "by car",
+    "walking": "walking",
+    "getDirections": "Get Directions"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Our Story",
+    "story": "Our Story",
+    "storyText": "Melodie Pousada à Beira Mar was born from the dream of offering guests a special place for rest and connection with nature. Located in Ingleses Norte, one of the most beautiful regions of Florianopolis, the pousada combines comfort, hospitality and the natural beauty of the Santa Catarina coast.",
+    "owners": "Our Owners",
+    "ownersText": "Fabio and his wife are responsible for making each guest's experience unique. Known for their excellent service and hospitality, they welcome each visitor as part of the family.",
+    "philosophy": "Philosophy",
+    "philosophyText": "We believe that good lodging goes beyond a comfortable bed. It's about creating memories, offering moments of peace and providing an experience that guests carry in their hearts."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We are at your service",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "success": "Message sent successfully!",
+      "error": "Error sending message"
+    },
+    "responseTime": "Response time: up to 24 hours"
+  },
+  "reviews": {
+    "title": "What our guests say",
+    "subtitle": "Real reviews",
+    "rating": "Rating",
+    "reviews": "reviews",
+    "writeReview": "Write Review",
+    "googleReviews": "Google Reviews",
+    "viewOnGoogle": "View on Google"
+  },
+  "booking": {
+    "title": "Make Your Reservation",
+    "subtitle": "Book your perfect moment",
+    "selectRoom": "Select Room",
+    "selectDates": "Select Dates",
+    "guestInfo": "Guest Information",
+    "payment": "Payment",
+    "summary": "Reservation Summary",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Guests",
+    "adults": "Adults",
+    "children": "Children",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "taxes": "Taxes",
+    "serviceFee": "Service Fee",
+    "advance": "Advance",
+    "dueAtCheckIn": "Due at check-in",
+    "confirm": "Confirm Reservation",
+    "success": "Reservation confirmed!",
+    "successMessage": "Thank you for choosing Melodie Pousada! You will receive a confirmation via email and WhatsApp.",
+    "confirmationEmail": "Confirmation email sent",
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "pix": "PIX",
+      "creditCard": "Credit Card",
+      "debitCard": "Debit Card",
+      "transfer": "Bank Transfer"
+    },
+    "rules": {
+      "title": "Reservation Policies",
+      "checkIn": "Check-in: 2:00 PM - 9:00 PM",
+      "checkOut": "Check-out: until 11:00 AM",
+      "cancellation": "Free cancellation up to 7 days before",
+      "smoking": "No smoking (common areas)",
+      "pets": "Pets not allowed"
+    }
+  },
+  "footer": {
+    "description": "Your perfect seaside retreat in Florianopolis",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "newsletter": {
+      "title": "Receive updates",
+      "placeholder": "Your email",
+      "subscribe": "Subscribe"
+    },
+    "copyright": "2024 Melodie Pousada à Beira Mar. All rights reserved.",
+    "developedBy": "Made with"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "bookings": "Bookings",
+    "rooms": "Rooms",
+    "settings": "Settings",
+    "statistics": "Statistics",
+    "totalBookings": "Total Bookings",
+    "totalRevenue": "Total Revenue",
+    "occupancy": "Occupancy",
+    "reviews": "Reviews",
+    "recentBookings": "Recent Bookings",
+    "pendingBookings": "Pending Bookings",
+    "confirmedBookings": "Confirmed Bookings",
+    "cancelledBookings": "Cancelled Bookings",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "status": "Status",
+    "actions": "Actions",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "noBookings": "No bookings found",
+    "login": "Login",
+    "logout": "Logout",
+    "welcome": "Welcome",
+    "addRoom": "Add Room",
+    "editRoom": "Edit Room",
+    "roomName": "Room Name",
+    "roomDescription": "Description",
+    "roomPrice": "Price",
+    "roomCapacity": "Capacity",
+    "roomFeatures": "Features"
+  },
+  "seo": {
+    "home": {
+      "title": "Melodie Pousada à Beira Mar | Accommodation in Ingleses Norte Florianopolis",
+      "description": "Beachfront pousada in Ingleses Norte, Florianopolis. Family lodging with direct beach access, BBQ grill and viewpoint. 4.9 star rating!"
+    },
+    "rooms": {
+      "title": "Rooms and Accommodations | Melodie Pousada",
+      "description": "Comfortable rooms with sea view in Florianopolis. Accommodations for couples, families and groups. Book now!"
+    },
+    "gallery": {
+      "title": "Photo Gallery | Melodie Pousada",
+      "description": "Photos of our pousada, Ingleses Norte beach and common areas. See our facilities!"
+    },
+    "location": {
+      "title": "Location | Melodie Pousada",
+      "description": "Find our address and how to get to Melodie Pousada in Ingleses Norte, Florianopolis."
+    },
+    "about": {
+      "title": "About Us | Melodie Pousada",
+      "description": "Learn about the history of Melodie Pousada and our owners Fabio and wife. Family lodging in Florianopolis."
+    },
+    "contact": {
+      "title": "Contact | Melodie Pousada",
+      "description": "Contact us. WhatsApp, phone, email and contact form."
+    },
+    "booking": {
+      "title": "Book Now | Melodie Pousada",
+      "description": "Book your stay at Melodie Pousada. Online booking system with immediate confirmation."
+    }
+  },
+  "messages": {
+    "welcome": "Welcome to Melodie Pousada!",
+    "thankYou": "Thank you for choosing us!",
+    "bookingConfirmed": "Reservation confirmed successfully!",
+    "error": "An error occurred. Please try again.",
+    "required": "Required field",
+    "invalidEmail": "Invalid email",
+    "invalidPhone": "Invalid phone",
+    "minLength": "Minimum {{min}} characters",
+    "maxLength": "Maximum {{max}} characters",
+    "selectOption": "Select an option",
+    "dateRequired": "Select the date",
+    "datesRequired": "Select the dates",
+    "roomRequired": "Select the room",
+    "nameRequired": "Name required",
+    "emailRequired": "Email required",
+    "phoneRequired": "Phone required",
+    "messageRequired": "Message required"
+  }
+}
+

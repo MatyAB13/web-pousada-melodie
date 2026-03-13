@@ -1,0 +1,15 @@
+### Node / Next.js
+node_modules/
+.next/
+
+### Environment files
+.env
+.env.local
+
+### Logs y build info
+*.log
+tsconfig.tsbuildinfo
+
+### Plataformas de deployment
+.vercel
+.netlify

@@ -1,0 +1,299 @@
+{
+  "common": {
+    "home": "Inicio",
+    "rooms": "Habitaciones",
+    "gallery": "Galeria",
+    "location": "Ubicacion",
+    "about": "Sobre Nosotros",
+    "contact": "Contacto",
+    "book": "Reservar Ahora",
+    "bookNow": "Reserve Ahora",
+    "viewMore": "Ver Mas",
+    "viewAll": "Ver Todos",
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "send": "Enviar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "close": "Cerrar",
+    "open": "Abrir",
+    "seeMore": "Ver Mas",
+    "seeLess": "Ver Menos",
+    "language": "Idioma",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Huespedes",
+    "nights": "Noches",
+    "night": "Noche",
+    "adults": "Adultos",
+    "children": "Ninos",
+    "total": "Total",
+    "price": "Precio",
+    "perNight": "por noche",
+    "perPerson": "por persona",
+    "free": "Gratis",
+    "available": "Disponible",
+    "unavailable": "No disponible",
+    "selectDate": "Seleccionar Fecha",
+    "selectDates": "Seleccionar Fechas",
+    "checkAvailability": "Ver Disponibilidad",
+    "translate": "Traducir"
+  },
+  "hero": {
+    "title": "Melodie Pousada à Beira Mar",
+    "subtitle": "Tu refugio perfecto frente al mar en Ingleses Norte",
+    "description": "Experimenta la verdadera hospitalidad brasilera en un paraiso tropical. Relajate en nuestros alojamientos comodoss con vista al mar.",
+    "cta": "Reserve Tu Estancia",
+    "scrollDown": "Desplazate hacia abajo"
+  },
+  "features": {
+    "title": "Por que hospedarse con nosotros?",
+    "subtitle": "Experiencia unica de hospedaje",
+    "beachFront": {
+      "title": "Frente al Mar",
+      "description": "Acceso directo a la playa de Ingleses Norte, una de las mas bellas de Florianopolis"
+    },
+    "familyRun": {
+      "title": "Atencion Familiar",
+      "description": "Fabio y su esposa ofrecen atencion personalizada a todos los huespedes"
+    },
+    "comfort": {
+      "title": "Comodidad",
+      "description": "Alojamientos comodos y bien equipados para tu maxima comodidad"
+    },
+    "location": {
+      "title": "Ubicacion Privilegiada",
+      "description": "Cerca de las dunas de Santinho y las mejores atracciones de Ingleses"
+    },
+    "amenities": {
+      "title": "Estructura Completa",
+      "description": "Parrilla, mirador, sillas y parasoles para los huespedes"
+    },
+    "peaceful": {
+      "title": "Ambiente Tranquilo",
+      "description": "El lugar perfecto para descansar y relajarse en familia"
+    }
+  },
+  "rooms": {
+    "title": "Nuestros Alojamientos",
+    "subtitle": "Comodidad y estilo en cada detalle",
+    "guests": "huespedes",
+    "bed": "cama",
+    "beds": "camas",
+    "size": "tamano",
+    "view": "vista",
+    "seaView": "Vista al Mar",
+    "gardenView": "Vista al Jardin",
+    "maxGuests": "Maximo de huespedes",
+    "viewDetails": "Ver Detalles",
+    "bookNow": "Reservar Ahora",
+    "perNight": "/noche",
+    "features": "Caracteristicas",
+    "amenities": "Comodidades"
+  },
+  "gallery": {
+    "title": "Galeria de Fotos",
+    "subtitle": "Momentos inseparables",
+    "interior": "Interior",
+    "exterior": "Exterior",
+    "beach": "Playa",
+    "amenities": "Areas Comunes",
+    "viewAll": "Ver Todas las Fotos"
+  },
+  "location": {
+    "title": "Ubicacion",
+    "subtitle": "Encuentra nuestro paraiso",
+    "address": "Direccion",
+    "howToGet": "Como Llegar",
+    "nearby": "Lugares Cercanos",
+    "beaches": "Playas",
+    "restaurants": "Restaurantes",
+    "supermarkets": "Supermercados",
+    "airport": "Aeropuerto",
+    "distance": "Distancia",
+    "driving": "en auto",
+    "walking": "a pie",
+    "getDirections": "Ver Direcciones"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Nuestra Historia",
+    "story": "Nuestra Historia",
+    "storyText": "Melodie Pousada à Beira Mar nacio del sueno de ofrecer a los huespedes un lugar especial para descanso y conexion con la naturaleza. Ubicada en Ingleses Norte, una de las regiones mas bellas de Florianopolis, la pousada combina comodidad, hospitalidad y la belleza natural del litoral catarinense.",
+    "owners": "Nuestros Duenos",
+    "ownersText": "Fabio y su esposa son los responsables de hacer que la experiencia de cada huesped sea unica. Conocidos por su excelente atencion y hospitalidad, ellos reciben a cada visitante como parte de la familia.",
+    "philosophy": "Filosofia",
+    "philosophyText": "Creemos que un buen hospedaje va mas alla de una cama comoda. Se trata de crear recuerdos, ofrecer momentos de paz y proporcionar una experiencia que los huespedes llevan en el corazon."
+  },
+  "contact": {
+    "title": "Contactanos",
+    "subtitle": "Estamos a tu disposicion",
+    "phone": "Telefono",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Direccion",
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Email",
+      "phone": "Telefono",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send": "Enviar Mensaje",
+      "success": "Mensaje enviado con exito!",
+      "error": "Error al enviar mensaje"
+    },
+    "responseTime": "Tiempo de respuesta: hasta 24 horas"
+  },
+  "reviews": {
+    "title": "Que dicen nuestros huespedes",
+    "subtitle": "Resenas reales",
+    "rating": "Calificacion",
+    "reviews": "resenas",
+    "writeReview": "Escribir Resena",
+    "googleReviews": "Resenas en Google",
+    "viewOnGoogle": "Ver en Google"
+  },
+  "booking": {
+    "title": "Haga su Reserva",
+    "subtitle": "Reserve su momento perfecto",
+    "selectRoom": "Seleccione la Habitacion",
+    "selectDates": "Seleccione las Fechas",
+    "guestInfo": "Datos del Huesped",
+    "payment": "Pago",
+    "summary": "Resumen de la Reserva",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guests": "Huespedes",
+    "adults": "Adultos",
+    "children": "Ninos",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "taxes": "Impuestos",
+    "serviceFee": "Tarifa de Servicio",
+    "advance": "Adelanto",
+    "dueAtCheckIn": "A pagar en el check-in",
+    "confirm": "Confirmar Reserva",
+    "success": "Reserva confirmada!",
+    "successMessage": "Gracias por elegir Melodie Pousada! Recibiras una confirmacion por email y WhatsApp.",
+    "confirmationEmail": "Email de confirmacion enviado",
+    "paymentMethods": {
+      "title": "Formas de Pago",
+      "pix": "PIX",
+      "creditCard": "Tarjeta de Credito",
+      "debitCard": "Tarjeta de Debito",
+      "transfer": "Transferencia Bancaria"
+    },
+    "rules": {
+      "title": "Politicas de Reserva",
+      "checkIn": "Check-in: 14:00 - 21:00",
+      "checkOut": "Check-out: hasta 11:00",
+      "cancellation": "Cancelacion gratis hasta 7 dias antes",
+      "smoking": "Prohibido fumar (areas comunes)",
+      "pets": "Mascotas no permitidas"
+    }
+  },
+  "footer": {
+    "description": "Tu refugio perfecto frente al mar en Florianopolis",
+    "quickLinks": "Enlaces Rapidos",
+    "contact": "Contacto",
+    "followUs": "Siguenos",
+    "newsletter": {
+      "title": "Recibir novedades",
+      "placeholder": "Tu email",
+      "subscribe": "Suscribirse"
+    },
+    "copyright": "2024 Melodie Pousada a Beira Mar. Todos los derechos reservados.",
+    "developedBy": "Desarrollado con"
+  },
+  "admin": {
+    "dashboard": "Panel",
+    "bookings": "Reservas",
+    "rooms": "Habitaciones",
+    "settings": "Configuraciones",
+    "statistics": "Estadisticas",
+    "totalBookings": "Total de Reservas",
+    "totalRevenue": "Ingresos Totales",
+    "occupancy": "Ocupacion",
+    "reviews": "Resenas",
+    "recentBookings": "Reservas Recientes",
+    "pendingBookings": "Reservas Pendientes",
+    "confirmedBookings": "Reservas Confirmadas",
+    "cancelledBookings": "Reservas Canceladas",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "status": "Estado",
+    "actions": "Acciones",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "view": "Ver",
+    "noBookings": "No se encontraron reservas",
+    "login": "Entrar",
+    "logout": "Salir",
+    "welcome": "Bienvenido",
+    "addRoom": "Agregar Habitacion",
+    "editRoom": "Editar Habitacion",
+    "roomName": "Nombre de la Habitacion",
+    "roomDescription": "Descripcion",
+    "roomPrice": "Precio",
+    "roomCapacity": "Capacidad",
+    "roomFeatures": "Caracteristicas"
+  },
+  "seo": {
+    "home": {
+      "title": "Melodie Pousada à Beira Mar | Hospedaje en Ingleses Norte Florianopolis",
+      "description": "Pousada frente al mar en Ingleses Norte, Florianopolis. Hospedaje familiar con acceso directo a la playa, parrilla y mirador. Calificacion 4.9 estrellas!"
+    },
+    "rooms": {
+      "title": "Habitaciones y Alojamientos | Melodie Pousada",
+      "description": "Comodas habitaciones con vista al mar en Florianopolis. Alojamientos para parejas, familias y grupos. Reserve ahora!"
+    },
+    "gallery": {
+      "title": "Galeria de Fotos | Melodie Pousada",
+      "description": "Fotos de nuestra pousada, playa de Ingleses Norte y areas comunes. Ve nuestras instalaciones!"
+    },
+    "location": {
+      "title": "Ubicacion | Melodie Pousada",
+      "description": "Encuentra nuestra direccion y como llegar a Melodie Pousada en Ingleses Norte, Florianopolis."
+    },
+    "about": {
+      "title": "Sobre Nosotros | Melodie Pousada",
+      "description": "Conoce la historia de Melodie Pousada y nuestros duenos Fabio y esposa. Hospedaje familiar en Florianopolis."
+    },
+    "contact": {
+      "title": "Contacto | Melodie Pousada",
+      "description": "Contactate con nosotros. WhatsApp, telefono, email y formulario de contacto."
+    },
+    "booking": {
+      "title": "Reserve Ya | Melodie Pousada",
+      "description": "Reserve tu estadia en Melodie Pousada. Sistema de reservas online con confirmacion inmediata."
+    }
+  },
+  "messages": {
+    "welcome": "Bienvenido a Melodie Pousada!",
+    "thankYou": "Gracias por elegirnos!",
+    "bookingConfirmed": "Reserva confirmada con exito!",
+    "error": "Ocurrio un error. Intenta de nuevo.",
+    "required": "Campo obligatorio",
+    "invalidEmail": "Email invalido",
+    "invalidPhone": "Telefono invalido",
+    "minLength": "Minimo de {{min}} caracteres",
+    "maxLength": "Maximo de {{max}} caracteres",
+    "selectOption": "Selecciona una opcion",
+    "dateRequired": "Selecciona la fecha",
+    "datesRequired": "Selecciona las fechas",
+    "roomRequired": "Selecciona la habitacion",
+    "nameRequired": "Nombre obligatorio",
+    "emailRequired": "Email obligatorio",
+    "phoneRequired": "Telefono obligatorio",
+    "messageRequired": "Mensaje obligatorio"
+  }
+}
+
