@@ -51,8 +51,6 @@ function CalendarView({ room, bookingsCount, occupancyRate }: CalendarViewProps)
   )
 }
 
-export const dynamic = 'force-dynamic';
-
 export default function AdminCalendar() {
   const [rooms, setRooms] = useState<Room[]>([])
   const [stats, setStats] = useState<Record<string, { bookingsCount: number, occupancyRate: number }>>({})
