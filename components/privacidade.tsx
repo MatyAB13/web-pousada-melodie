@@ -280,7 +280,7 @@ isOpen={openSections.has('contact')}
                   {t.contactInfo.email}
                 </a>
               </div>
-className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary" />
                 <a href={`tel:${t.contactInfo.phone}`} className="text-text-secondary hover:text-primary transition-colors">
                   {t.contactInfo.phone}
@@ -288,7 +288,7 @@ className="flex items-center gap-3">
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary" />
-className="text-text-secondary">{t.contactInfo.address}</span>
+                <span className="text-text-secondary">{t.contactInfo.address}</span>
               </div>
             </div>
           </div>
