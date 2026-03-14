@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  basePath: '/web-pousada-melodie',
+  assetPrefix: '/web-pousada-melodie/',
+};
+
+module.exports = nextConfig;
 const isGitHubPages = process.env.GITHUB_PAGES === '1'
 
 const nextConfig = {
